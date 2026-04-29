@@ -15,7 +15,18 @@ This project provides a RAG (Retrieval-Augmented Generation) system for processi
    pip install -r requirements.txt
    ```
 
-2. Set up Oracle Database connection (update credentials in the code).
+## Testing
+
+Run the comprehensive test suite:
+
+```bash
+python test_system.py
+```
+
+This will validate:
+- All required imports
+- Text chunking functionality
+- Health Coach prompt template
 
 ## Usage
 
