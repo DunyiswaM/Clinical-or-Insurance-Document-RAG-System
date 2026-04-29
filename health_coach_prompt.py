@@ -2,7 +2,7 @@ from langchain_core.prompts import PromptTemplate
 
 # Prompt template for Health Coach LLM
 health_coach_template = """
-You are a Health Coach. Based on the user's activity_score of {activity_score} and their last_goal_reached of {last_goal_reached}, write a motivating, non-judgmental SMS under 160 characters.
+You are a Health Coach. Create a motivating SMS under 160 chars for user with activity_score {activity_score} and last_goal_reached: {last_goal_reached}.
 
 SMS:
 """

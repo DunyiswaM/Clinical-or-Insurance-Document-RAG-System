@@ -28,6 +28,39 @@ This will validate:
 - Text chunking functionality
 - Health Coach prompt template
 
+## Simulation
+
+Run the complete system simulation with mock database:
+
+```bash
+python simulate_rag_system.py
+```
+
+This demonstrates:
+- PDF document creation and processing
+- Mock Oracle database operations
+- Text chunking and embedding storage
+- Vector similarity search
+- Health Coach prompt generation
+
+Run individual component tests:
+
+```bash
+python simulate_rag_system.py --test
+```
+
+## Sample Documents
+
+The system includes sample clinical and insurance documents:
+- `sample_clinical_document.pdf` - Complete medical record
+- `sample_insurance_document.pdf` - Insurance claim document
+
+Generate new sample documents:
+
+```bash
+python create_sample_pdfs.py
+```
+
 ## Usage
 
 ### Processing PDFs

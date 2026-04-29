@@ -3,3 +3,4 @@ langchain-oracledb
 langchain-community
 pypdf
 oracledb
+reportlab
