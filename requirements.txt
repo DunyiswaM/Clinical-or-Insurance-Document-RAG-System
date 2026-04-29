@@ -1,0 +1,6 @@
+langchain
+langchain-oracledb
+langchain-community
+langchain-huggingface
+pypdf
+oracledb
