@@ -1,7 +1,7 @@
 import oracledb
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_oracledb.embeddings import OracleEmbeddings
 from langchain_oracledb.vectorstores import OracleVS
 from langchain_core.documents import Document
 
@@ -27,8 +27,8 @@ def process_pdf_and_store_embeddings(pdf_path: str, connection, table_name: str 
     )
     chunks = text_splitter.split_documents(documents)
 
-    # Initialize embeddings (using HuggingFace for example; replace with OracleEmbeddings if preferred)
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    # Initialize embeddings using Oracle AI
+    embeddings = OracleEmbeddings(conn=connection, params={"provider": "database", "model": "DB_MODEL"})
 
     # Create vector store and store embeddings
     vector_store = OracleVS.from_documents(
