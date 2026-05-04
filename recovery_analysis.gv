@@ -1,0 +1,44 @@
+
+digraph RecoveryAnalysis {
+    rankdir=TB;
+    node [shape=box, style=filled];
+    edge [penwidth=2];
+    
+    Title [label="Recovery Score Analysis", shape=record, fillcolor="#FFB703"];
+    
+    subgraph cluster_low {
+        label="Low Recovery
+(Score < 40)";
+        fillcolor="#FFB4B4";
+        Low [label="130 Patients
+Avg Visits: 8.5
+Higher Costs"];
+    }
+    
+    subgraph cluster_med {
+        label="Medium Recovery
+(Score 40-70)";
+        fillcolor="#FFF4B4";
+        Med [label="220 Patients
+Avg Visits: 5.2
+Moderate Costs"];
+    }
+    
+    subgraph cluster_high {
+        label="High Recovery
+(Score > 70)";
+        fillcolor="#B4FFB4";
+        High [label="150 Patients
+Avg Visits: 2.1
+Lower Costs"];
+    }
+    
+    Title -> Low;
+    Title -> Med;
+    Title -> High;
+    
+    High -> Outcome1 [label="Better outcomes
+Lower claims"];
+    Low -> Outcome2 [label="Need intervention
+Higher costs"];
+}

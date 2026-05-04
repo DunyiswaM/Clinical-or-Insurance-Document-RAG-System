@@ -1,0 +1,46 @@
+
+digraph ConditionTreatment {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#FFE66D"];
+    edge [color="#95B8D1", penwidth=1.5];
+    
+    subgraph cluster_conditions {
+        label="Conditions";
+        style=filled;
+        fillcolor="#F0F0F0";
+        Hypertension [label="Hypertension
+92 patients"];
+        Diabetes [label="Diabetes
+88 patients"];
+        Asthma [label="Asthma
+78 patients"];
+        HeartDisease [label="Heart Disease
+75 patients"];
+        Depression [label="Depression
+82 patients"];
+    }
+    
+    subgraph cluster_treatments {
+        label="Treatments";
+        style=filled;
+        fillcolor="#F0F0F0";
+        Medication [label="Medication
+$3,200 avg"];
+        Therapy [label="Therapy
+$2,800 avg"];
+        Surgery [label="Surgery
+$25,000 avg"];
+        Monitoring [label="Monitoring
+$1,500 avg"];
+    }
+    
+    Hypertension -> Medication;
+    Hypertension -> Monitoring;
+    Diabetes -> Medication;
+    Diabetes -> Monitoring;
+    Asthma -> Medication;
+    HeartDisease -> Surgery;
+    HeartDisease -> Medication;
+    Depression -> Therapy;
+    Depression -> Medication;
+}

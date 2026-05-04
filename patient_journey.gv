@@ -1,0 +1,29 @@
+
+digraph PatientJourney {
+    rankdir=LR;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", style="rounded,filled"];
+    edge [color="#2E86AB", penwidth=2];
+    
+    Start [label="Patient
+Visit", fillcolor="#FFB703"];
+    Diagnosis [label="Initial
+Diagnosis"];
+    Treatment [label="Treatment
+Plan Selected"];
+    Monitor [label="Monitoring &
+Follow-ups"];
+    Recovery [label="Recovery
+Assessment"];
+    End [label="Treatment
+Complete", fillcolor="#06A77D"];
+    
+    Start -> Diagnosis [label="Clinical
+Evaluation"];
+    Diagnosis -> Treatment [label="5 Treatment
+Options"];
+    Treatment -> Monitor [label="Ongoing
+Care"];
+    Monitor -> Recovery [label="12 Weeks"];
+    Recovery -> End [label="Recovery
+Score"];
+}

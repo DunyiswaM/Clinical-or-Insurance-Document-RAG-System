@@ -1,0 +1,38 @@
+
+digraph CostAnalysis {
+    rankdir=LR;
+    node [shape=box, style=filled, fillcolor="#E8E8E8"];
+    edge [penwidth=2];
+    
+    Patient [label="Patient
+Cohort
+500"];
+    
+    Hosp_Yes [label="Hospitalized
+120 (24%)
+Avg: $15,000"];
+    Hosp_No [label="No Hospital
+380 (76%)
+Avg: $5,200"];
+    
+    FollowUp_High [label="High Follow-ups
+(8+)
+Avg: $8,500"];
+    FollowUp_Low [label="Low Follow-ups
+(0-3)
+Avg: $2,100"];
+    
+    Recover_Good [label="Good Recovery
+$3,100 total"];
+    Recover_Poor [label="Poor Recovery
+$12,500 total"];
+    
+    Patient -> Hosp_Yes [label="24%", color="#FF6B6B"];
+    Patient -> Hosp_No [label="76%", color="#4CAF50"];
+    
+    Hosp_Yes -> FollowUp_High [color="#FF6B6B"];
+    Hosp_No -> FollowUp_Low [color="#4CAF50"];
+    
+    FollowUp_High -> Recover_Poor [color="#FF6B6B"];
+    FollowUp_Low -> Recover_Good [color="#4CAF50"];
+}
