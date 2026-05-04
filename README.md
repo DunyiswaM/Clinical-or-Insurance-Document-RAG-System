@@ -63,20 +63,37 @@ python create_sample_pdfs.py
 
 ## Usage
 
-### Processing PDFs
+### Processing PDFs with Mock Database (Testing)
 
-Run the RAG system script:
+For testing without a real Oracle database:
 
-```python
-from rag_system import process_pdf_and_store_embeddings
-import oracledb
+```bash
+# Generate sample PDFs first
+python create_sample_pdfs.py
 
-# Connect to Oracle DB
-connection = oracledb.connect(user="username", password="password", dsn="hostname:port/service_name")
+# Process a PDF using mock database
+python rag_system.py --mock --pdf sample_clinical_document.pdf
 
-# Process PDF
-vector_store = process_pdf_and_store_embeddings("path/to/document.pdf", connection)
+# Or process insurance document
+python rag_system.py --mock --pdf sample_insurance_document.pdf
 ```
+
+### Processing PDFs with Real Oracle Database (Production)
+
+For production use with actual Oracle AI Vector Search:
+
+1. Update connection credentials in `rag_system.py`
+2. Run the system:
+
+```bash
+python rag_system.py --pdf path/to/your/document.pdf
+```
+
+### Command Line Options
+
+- `--pdf PATH`: Path to PDF file to process
+- `--mock`: Use mock database for testing (no real Oracle DB required)
+- `--table NAME`: Table name for vector storage (default: DOCUMENTS)
 
 ### Health Coach Prompt
 

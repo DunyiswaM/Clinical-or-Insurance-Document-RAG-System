@@ -8,6 +8,7 @@ import os
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 from langchain_core.documents import Document
+from langchain_community.vectorstores.utils import DistanceStrategy
 
 class MockOracleConnection:
     """Mock Oracle database connection for testing purposes."""
@@ -76,7 +77,7 @@ class MockOracleEmbeddings:
 class MockOracleVS:
     """Mock Oracle Vector Store for testing."""
 
-    def __init__(self, connection, table_name: str, embedding_function=None, distance_strategy: str = "COSINE"):
+    def __init__(self, connection, table_name: str, embedding_function=None, distance_strategy: DistanceStrategy = DistanceStrategy.COSINE):
         self.connection = connection
         self.table_name = table_name
         self.embedding_function = embedding_function
@@ -85,7 +86,7 @@ class MockOracleVS:
         print(f"Mock OracleVS initialized for table: {table_name}")
 
     @classmethod
-    def from_documents(cls, documents: List[Document], embedding, client, table_name: str, distance_strategy: str = "COSINE"):
+    def from_documents(cls, documents: List[Document], embedding, client, table_name: str, distance_strategy: DistanceStrategy = DistanceStrategy.COSINE):
         """Create vector store from documents."""
         instance = cls(client, table_name, embedding, distance_strategy)
 
@@ -143,6 +144,6 @@ def create_mock_embeddings(conn, params=None) -> MockOracleEmbeddings:
     """Create mock embeddings for testing."""
     return MockOracleEmbeddings(conn, params)
 
-def create_mock_vectorstore(documents: List[Document], embedding, client, table_name: str, distance_strategy: str = "COSINE"):
+def create_mock_vectorstore(documents: List[Document], embedding, client, table_name: str, distance_strategy: DistanceStrategy = DistanceStrategy.COSINE):
     """Create mock vector store for testing."""
     return MockOracleVS.from_documents(documents, embedding, client, table_name, distance_strategy)
